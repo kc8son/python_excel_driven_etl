@@ -1,0 +1,46 @@
+# Ignore secrets and configuration files
+secrets.json
+config/secrets.json
+src/secrets.json
+
+# Common secret file patterns
+*.secrets.json
+*secrets*.json
+.env
+.env.local
+.env.*.local
+
+# Database configuration files
+database.json
+db-config.json
+
+# API keys and credentials
+api-keys.json
+credentials.json
+
+# Operating System files
+.DS_Store
+Thumbs.db
+
+# IDE and editor files
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+
+# Logs
+*.log
+logs/
+
+# Dependency directories
+node_modules/
+vendor/
+
+# Build outputs
+dist/
+build/
+*.exe
+*.dll
+*.so
+*.dylib

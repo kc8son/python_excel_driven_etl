@@ -1,0 +1,25 @@
+{
+  "database": {
+    "nw_src": {
+      "host": "localhost",
+      "port": 5432,
+      "database": "nw_src",
+      "username": "nw_etl",
+      "password": "***YourSecretPassword***"
+    },
+    "nw_dest_pg": {
+      "host": "localhost",
+      "port": 5432,
+      "database": "nw_etl",
+      "username": "nw_etl",
+      "password": "***YourSecretPassword***"
+    },
+    "nw_dest_ms": {
+      "host": "localhost",
+      "port": 1433,
+      "database": "nw",
+      "username": "nw_etl",
+      "password": "***YourSecretPassword***"
+    }
+  }
+}
