@@ -26,10 +26,11 @@ import shutil
 #   Variables
 secrets_location = r"./secrets.json"
 excel_driver_location = r"./etl_driver.xlsx"
+my_name = str(sys.argv[0])
+log_file = str(sys.argv[0]).replace('.py', '.log')
 
 ################################################################################
 #   set up logging
-log_file = str(sys.argv[0]).replace('.py', '.log')
 try:
     print(f'Removing log file: {log_file}...')
     os.remove(log_file)
@@ -59,21 +60,22 @@ def clear_screen():
     else:
         _ = os.system('clear')
 
-def get_conn_variables(my_db):
+def get_conn_variables(my_db_key):
     """
     This function reads the secrets file and returns the connection variables for Which_db
     """
     # Open and read the JSON file
     with open(secrets_location, 'r') as file:
         data = json.load(file)
-    print(data)
-    #   host, db, port, pw, user
-    my_host = data['database_connections'][my_db]['host']
-    my_db = data['database_connections'][my_db]['database']
-    my_port = data['database_connections'][my_db]['port']
-    my_pw = data['database_connections'][my_db]['password']
-    my_user = data['database_connections'][my_db]['username']
-    my_type = data['database_connections'][my_db]['db_type']
+    print("key on: ", my_db_key)
+    print(data['database_connections'][my_db_key])
+    #   host, db, port, pw, user, db_type
+    my_host = data['database_connections'][my_db_key]['host']
+    my_db = data['database_connections'][my_db_key]['database']
+    my_pw = data['database_connections'][my_db_key]['password']
+    my_user = data['database_connections'][my_db_key]['username']
+    my_type = data['database_connections'][my_db_key]['db_type']
+    my_port = data['database_connections'][my_db_key]['port']
     return my_type, my_host, my_db, my_port, my_pw, my_user
 
 def read_config_settings(excel_file_path):
@@ -92,11 +94,6 @@ def get_connection(db_name, schema_name):
     engine = create_engine(conn_str)
     return engine.connect()
 
-def read_secrets(db_name):
-    """
-    Opens the specified Excel file and returns a pandas DataFrame.
-    """
-
 ################################################################################
 #   main code excution
 if __name__ == "__main__":
@@ -106,21 +103,33 @@ if __name__ == "__main__":
     my_name = str(sys.argv[0])
     logging.info('='*80)
     logging.info(f'Hello - Starting: {my_name}')
-    # Get database settings
+
+################################################################################
+# Get database settings
     settings_df = read_config_settings(excel_driver_location)
     print(settings_df)
     logging.info(f'Config settings read from: {excel_driver_location}, getting connections.')
-    # get connections to source and dest
-    # # Get source database connection
-    print(settings_df['Value'][0])
-    print(settings_df['Value'][1])
-    print(settings_df['Value'][2])
-    print(settings_df['Value'][3])
+
+################################################################################
+# get connections to source and dest
+    logging.info(f'Getting connections for source database.')
     src_conn = get_connection(settings_df['Value'][0], settings_df['Value'][1])
+    logging.info(f'Getting connections for destination database.')
     dest_conn = get_connection(settings_df['Value'][2], settings_df['Value'][3])
+    # Get the other sheets as table names.
+
 
     # src_host, src_db, src_port, src_pw, src_user = get_conn_variables('source_db')
     # logging.info(f'Source DB: {src_db} @ {src_host}:{src_port} as {src_user}')
     # # Get destination database connection variables
     # dest_host, dest_db, dest_port, dest_pw, dest_user = get_conn_variables('dest_db')
     # logging.info(f'Destination DB: {dest_db} @ {dest_host}:{dest_port} as {dest_user}')
+
+
+################################################################################
+#   Completion
+    script_end = datetime.now()
+    runtime = str(script_end-script_start)
+    logging.info(f'The time of execution of above program is :  {runtime}')
+    logging.info(f'Goodbye - {my_name}')
+    logging.info(f'='*80)
