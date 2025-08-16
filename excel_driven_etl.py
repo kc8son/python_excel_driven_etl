@@ -10,6 +10,7 @@
 #   
 #   Future enhancements:
 #   - Add meaningful print statemnts to track progress and validate values.
+#   - Fix db permissions for nw_etl.
 #   - Use the New_name column in the spreadsheets to rename 
 #       columns in the destination table.
 #   - Use the filter column in the spreadsheet to ETL a subset
