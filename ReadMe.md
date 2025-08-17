@@ -182,6 +182,7 @@ excel-driven-etl/
 
 ## 🔮 Planned Enhancements
 
+- [ ] **Better error handling**: There are some additional areas where we vould do error checks and maybe gracefully exit when encountering errors
 - [ ] **Column Renaming**: Use `New_Name` column for destination column names
 - [ ] **Data Filtering**: Implement row-level filtering using `Filter` column
 - [ ] **Table Prefixes/Suffixes**: Add configurable table name modifications
@@ -189,6 +190,7 @@ excel-driven-etl/
 - [ ] **Database Permissions**: Improved permission handling for destination schemas
 - [ ] **Incremental Loading**: Support for delta/incremental data loads
 - [ ] **Data Type Mapping**: Automatic data type conversion between databases
+- [ ] **Parameterize the driver file**: Add a parameter for the excel file path. Consider changing the log file name to include the excel file name
 
 ## 🐛 Troubleshooting
 
@@ -230,7 +232,7 @@ Log file location: `excel_driven_etl.log`
 
 ## 📝 License
 
-This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
+This project is licensed under the MIT License - see the [LICENSE](./LICENSE.md) file for details.
 
 ## 👨‍💻 Author
 
@@ -238,12 +240,14 @@ This project is licensed under the MIT License - see the [LICENSE](LICENSE) file
 - Created: August 13, 2025
 - Email: kc8son@yahoo.com
 - GitHub: [kc8son](https://github.com/kc8son)
+- LinkedIn: [Joe Merten](https://www.linkedin.com/in/joseph-merten/)
 
 ## 🙏 Acknowledgments
 
 - Built with [Pandas](https://pandas.pydata.org/) for data manipulation
 - Database connectivity powered by [SQLAlchemy](https://www.sqlalchemy.org/)
 - Excel integration via [OpenPyXL](https://openpyxl.readthedocs.io/)
+- Documentation via [Claude.ai](https://claude.ai/new)
 
 ---
 

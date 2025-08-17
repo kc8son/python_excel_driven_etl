@@ -17,6 +17,8 @@
 #        of the source table.
 #   - Use the dest_prefix and dest_suffix values in the [config] tab to add
 #        a suffix/prefix to the table name.
+#   - Add a parameter for the excel file path. Consider changing the log file
+#       name to include the excel file name.
 #
 ################################################################################
 #   Imports...
