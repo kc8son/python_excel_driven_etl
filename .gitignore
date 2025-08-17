@@ -29,6 +29,11 @@ Thumbs.db
 *.swo
 *~
 
+# excel temporary files
+~$*.xlsx
+~$*.xls
+*.tmp
+
 # Logs
 *.log
 logs/
